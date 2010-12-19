@@ -22,7 +22,7 @@ end
 
 # Database
 db = YAML.load_file("db/database.yml")[Application::ENVIRONMENT]
-DataMapper.setup(:default, "sqlite3://#{File.expand_path(File.join(Application::ROOT, 'db', db['database']))}.db")
+DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{File.expand_path(File.join(Application::ROOT, 'db', db['database']))}.db")
 
 
 # Load Paths under app directory
