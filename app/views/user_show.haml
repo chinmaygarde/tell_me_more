@@ -1,0 +1,8 @@
+- content_for :title do
+	"#{@user.email}"
+#user_profile.profile
+	%img{:src=>"#{gravatar(@user.email)}", :style => "float: left; padding-right: 15px"}
+	%p= "Handle: #{@user.handle}"
+	%p= "Email: #{@user.email}"
+	%p
+		%a{:href=>"/users/#{@user.id}/edit"} Edit Profile

@@ -1,0 +1,29 @@
+!!! 5
+%html
+	%head
+		%title= "Sinatra New #{yield_content :title}"
+		%link{:rel=>'stylesheet', :media => "screen",:href=>'/styles/main.css', :type => "text/css"}
+		%script{:src => '/scripts/jquery.js', :type=>"text/javascript"}
+	%body
+		#top_bar
+			#top_bar_contents
+				#logo
+				#search_bar
+					%input{:type=>"text", :placeholder => "Search"}
+				#link_bar
+					%ul
+						%li
+							%a{:href=>"/"} Home
+				#login_bar
+					%ul
+						- if signed_in?
+							%li
+								%img{:src => "#{gravatar(current_user.email, 20)}", :style => "float: left; padding-right:10px"}
+								%a{:href => "/users/#{current_user.id}/show"}= "Signed in as #{(!current_user.handle.nil?) ? current_user.handle : 'J Doe'}"
+							%li
+								%a{:href => "/logout"} Sign Out
+						- else
+							%li
+								%a{:href => "/login"} Sign In
+		#content
+			= yield

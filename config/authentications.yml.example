@@ -1,0 +1,4 @@
+# https://github.com/account/applications/
+github:
+    client_id: <client_id>
+    secret: <secret>

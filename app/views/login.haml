@@ -1,0 +1,9 @@
+- content_for :title do
+	"Login"
+
+%h3 Login using ...
+- %w(github).each do |provider|
+	.profile.login_provider
+		%a{:href=>"/auth/#{provider}"}
+			%img{:src => "/auth/#{provider}_64.png"}
+			%span= provider

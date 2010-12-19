@@ -1,0 +1,6 @@
+development:
+    database: development
+test:
+    database: development
+production:
+    database: development
