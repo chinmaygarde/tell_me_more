@@ -5,6 +5,8 @@ gem "sinatra"
 ### Database
 gem "datamapper"
 gem "dm-sqlite-adapter"
+# Heroku needs it
+gem "dm-postgres-adapter"
 gem "activesupport"
 gem "i18n"
 
