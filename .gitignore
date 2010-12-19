@@ -11,4 +11,3 @@ nbproject/*
 tmp/*
 *.rdb
 coverage
-config/authentications.yml
