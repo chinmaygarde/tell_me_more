@@ -1,4 +1,7 @@
 # https://github.com/account/applications/
-github:
+github_development:
     client_id: b42c51a7552a5d1a0018
     secret: 809828011c8a381eedc2900bf624a93dce542d0d
+github_production:
+    client_id: 0d4231ea05827ae4e413
+    secret: 18d61c80b3d4e206549b54da5d33d386ea158c67

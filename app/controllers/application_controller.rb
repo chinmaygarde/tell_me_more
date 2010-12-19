@@ -16,7 +16,7 @@ class ApplicationController < Sinatra::Base
   enable :sessions
   
   use OmniAuth::Builder do
-    provider :github,   Application::AUTH_TOKENS["github"]["client_id"], Application::AUTH_TOKENS["github"]["secret"]
+    provider :github,   Application::AUTH_TOKENS["github_#{Application::ENVIRONMENT}"]["client_id"], Application::AUTH_TOKENS["github_#{Application::ENVIRONMENT}"]["secret"]
   end
   
   get '/login' do
