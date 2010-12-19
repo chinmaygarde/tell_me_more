@@ -2,7 +2,7 @@ require 'yaml'
 
 module Application
   ROOT = File.dirname(__FILE__)
-  ENVIRONMENT = ENV['environment'] || 'development'
+  ENVIRONMENT = ENV['RACK_ENV'] || 'development'
   AUTH_TOKENS = YAML.load_file("config/authentications.yml")
 end
 
