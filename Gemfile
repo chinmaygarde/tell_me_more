@@ -17,6 +17,12 @@ gem "sinatra-content-for", :require => "sinatra/content_for"
 ### Authorization
 gem "omniauth", "0.1.6"
 
+### Twitter
+gem "twitter"
+
+### Indexing
+gem "indextank"
+
 ### Test Group
 group :test do
 	### RSpec
