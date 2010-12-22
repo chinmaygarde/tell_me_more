@@ -26,4 +26,7 @@
 							%li
 								%a{:href => "/login"} Sign In
 		#content
-			= yield
+			#main_pane.pane
+				= yield
+			#nav_pane.pane
+				= yield_content :nav_pane
