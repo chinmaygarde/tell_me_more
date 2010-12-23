@@ -4,6 +4,6 @@ class User
   property :id, Serial
   property :handle, String
   property :email, String
-  property :image_url, String
+  property :image_url, Text
   has n, :authentications
 end
