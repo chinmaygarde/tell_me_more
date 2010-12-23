@@ -23,7 +23,7 @@ end
 # Database
 db = YAML.load_file("db/database.yml")[Application::ENVIRONMENT]
 DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{File.expand_path(File.join(Application::ROOT, 'db', db['database']))}.db")
-
+DataMapper::Model.raise_on_save_failure = true
 
 # Load Paths under app directory
 %w[helpers controllers jobs models].each do |dir|
@@ -32,4 +32,4 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{File.expand_path(
   end
 end
 
-DataMapper.auto_migrate!
+DataMapper.auto_upgrade!

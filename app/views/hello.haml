@@ -1,1 +1,6 @@
-%h1 Hello World
+%h1 Tell Me More
+#intro
+	- unless signed_in?
+		Login to analyze your Tweets
+	- else
+		- redirect '/tweets/gather'

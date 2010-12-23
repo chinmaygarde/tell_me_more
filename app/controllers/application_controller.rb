@@ -4,7 +4,7 @@ class ApplicationController < Sinatra::Base
     also_reload File.join(Application::ROOT, "app/models/*.rb")
   end
   
-  # TODO: Add application wide helpers here
+  # Add application wide helpers here
   helpers UserHelpers
   helpers Sinatra::ContentFor
   
@@ -39,7 +39,7 @@ class ApplicationController < Sinatra::Base
       user.handle = auth['user_info']['nickname']
       user.email = auth['user_info']['email'] if !auth['user_info']['email'].nil?
       user.image_url = auth['user_info']['image'] if !auth['user_info']['image'].nil?
-      user.save!
+      user.save
       
       login_user(user)
     end

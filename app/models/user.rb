@@ -7,6 +7,7 @@ class User
   property :image_url, Text
   
   has n, :authentications
+  has n, :tweets
   
   validates_presence_of :handle
 end
