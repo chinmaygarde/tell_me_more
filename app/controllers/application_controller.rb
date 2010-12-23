@@ -17,6 +17,7 @@ class ApplicationController < Sinatra::Base
   
   use OmniAuth::Builder do
     provider :github,   Application::AUTH_TOKENS["github_#{Application::ENVIRONMENT}"]["client_id"], Application::AUTH_TOKENS["github_#{Application::ENVIRONMENT}"]["secret"]
+    provider :twitter,   Application::AUTH_TOKENS["twitter_#{Application::ENVIRONMENT}"]["consumer_key"], Application::AUTH_TOKENS["twitter_#{Application::ENVIRONMENT}"]["consumer_secret"]
   end
   
   get '/login' do
@@ -25,7 +26,7 @@ class ApplicationController < Sinatra::Base
   
   get '/auth/:name/callback' do
     auth = request.env['omniauth.auth']
-
+    
     auth_record = Authentication.first(:conditions => { :provider => auth['provider'], :uid => auth['uid'] })
     if !auth_record.nil?
       # Existing User
@@ -33,11 +34,12 @@ class ApplicationController < Sinatra::Base
     else
       # New User
       auth_record = Authentication.create!(:provider => auth['provider'], :uid => auth['uid'])
-
+      
       user = User.new
       user.authentications << auth_record
       user.handle = auth['user_info']['nickname'] if !auth['user_info']['nickname'].nil?
       user.email = auth['user_info']['email'] if !auth['user_info']['email'].nil?
+      user.image_url = auth['user_info']['image'] if !auth['user_info']['image'].nil?
       user.save!
       
       login_user(user)

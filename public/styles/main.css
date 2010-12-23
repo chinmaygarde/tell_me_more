@@ -1,10 +1,11 @@
 body {
 	font-family: 'Helvetica Neue', Arial, Helvetica, 'Liberation Sans', FreeSans, sans-serif;
+	font-size: 13px;
 	margin: 0px;
 	padding: 0px;
 	color: #111;
-	background: #aaa;
-	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#aaa), to(#fff));
+	background: #DEEFF6;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#DEEFF6), to(#fff));
 	background-attachment: fixed;
 }
 
@@ -13,7 +14,7 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: bold;
 	margin-top: 0px;
 	margin-bottom: 10px;
-	font-size: 22px;
+	font-size: 18px;
 }
 
 #top_bar {
@@ -112,10 +113,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #content input, textarea {
-	width: 95%;
+	width: 300px;
 	font-size:20px;
 	background-color: #bbb;
-	color: #fff;
+
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	padding:8px;
@@ -154,12 +155,19 @@ h1, h2, h3, h4, h5, h6 {
 
 .profile {
 	background-color: #eee;
-	margin: 12px;
+	margin: 6px;
 	padding: 12px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px;
 	border-style: solid;
-	border-color: rgba(180, 180, 180, 0.8);	
+	border-width: 2px;
+	border-color: transparent;
+}
+
+.profile:hover {
+	border-style: solid;
+	border-width: 2px;
+	border-color: rgba(180, 180, 180, 0.8);
 }
 
 .pane {
@@ -169,7 +177,8 @@ h1, h2, h3, h4, h5, h6 {
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	border-style: solid;
-	border-color: #777;
+	border-color: #CCC;
+	border-width: 1px;
 	margin-bottom: 25px;
 }
 

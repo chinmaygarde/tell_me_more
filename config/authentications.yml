@@ -5,3 +5,11 @@ github_development:
 github_production:
     client_id: 0d4231ea05827ae4e413
     secret: 18d61c80b3d4e206549b54da5d33d386ea158c67
+
+# http://dev.twitter.com/apps
+twitter_development:
+    consumer_key: 2V0xrY1ZSXqfjOovcyB7Q
+    consumer_secret: moWdmQpbVmOTziybHba9FuR4dS7UYT1Wtxa5FYblzaY
+twitter_production:
+    consumer_key: 2V0xrY1ZSXqfjOovcyB7Q
+    consumer_secret: moWdmQpbVmOTziybHba9FuR4dS7UYT1Wtxa5FYblzaY

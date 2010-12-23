@@ -13,7 +13,8 @@ class UserController < ApplicationController
     user = User.get(user_id)
     user.handle = params[:handle] if params[:handle]
     user.email = params[:email] if params[:email]
-    user.save
+    user.image_url = params[:image_url] if params[:image_url]
+    user.save!
     redirect "/users/#{user.id}/show"
   end
 end
