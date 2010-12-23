@@ -2,7 +2,7 @@
 	"#{@user.email}"
 #user_profile.profile
 	%img{:src=>"#{gravatar(@user)}", :style => "float: left; padding-right: 15px"}
-	%p= "Handle: #{@user.handle}"
+	%p= "Twitter Handle: #{@user.handle}"
 	%p= "Email: #{@user.email}"
 	%p
 		%a{:href=>"/users/#{@user.id}/edit"} Edit Profile

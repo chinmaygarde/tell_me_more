@@ -16,7 +16,6 @@ class ApplicationController < Sinatra::Base
   enable :sessions
   
   use OmniAuth::Builder do
-    provider :github,   Application::AUTH_TOKENS["github_#{Application::ENVIRONMENT}"]["client_id"], Application::AUTH_TOKENS["github_#{Application::ENVIRONMENT}"]["secret"]
     provider :twitter,   Application::AUTH_TOKENS["twitter_#{Application::ENVIRONMENT}"]["consumer_key"], Application::AUTH_TOKENS["twitter_#{Application::ENVIRONMENT}"]["consumer_secret"]
   end
   
@@ -37,7 +36,7 @@ class ApplicationController < Sinatra::Base
       
       user = User.new
       user.authentications << auth_record
-      user.handle = auth['user_info']['nickname'] if !auth['user_info']['nickname'].nil?
+      user.handle = auth['user_info']['nickname']
       user.email = auth['user_info']['email'] if !auth['user_info']['email'].nil?
       user.image_url = auth['user_info']['image'] if !auth['user_info']['image'].nil?
       user.save!
