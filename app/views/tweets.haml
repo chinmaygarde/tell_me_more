@@ -1,0 +1,8 @@
+%h1= "Retrieved #{@tweets.count} tweets"
+#summary= "You have #{@tweet_count} tweets indexed"
+- @tweets.each_with_index do |tweet, index|
+	%div{:id => "tweet_#{tweet.id}", :class => "tweet profile #{(index%2 == 1) ? 'left' : 'right'}"}
+		.author
+			%img{:src => current_user.image_url, :style => "width: 32px; height: 32px;" }
+			%span{:style => "font-size: 18px; font-weight: bold;"}= current_user.handle
+		.tweet_text= tweet.text

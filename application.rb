@@ -32,4 +32,5 @@ DataMapper::Model.raise_on_save_failure = true
   end
 end
 
+DataMapper.finalize
 DataMapper.auto_upgrade!

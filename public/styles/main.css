@@ -109,7 +109,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin-right: auto;
 	padding: 15px;
 	margin-top: 40px;
-	min-height: 800px;
+
 }
 
 #content input, textarea {
@@ -190,4 +190,18 @@ h1, h2, h3, h4, h5, h6 {
 #nav_pane {
 	width: 17%;
 	float:left;
+}
+
+.left img {
+	float: left;
+	padding: 10px;
+}
+.right img {
+	float: right;
+	padding: 10px;
+}
+
+.tweet {
+	width: 500px;
+	min-height: 50px;
 }

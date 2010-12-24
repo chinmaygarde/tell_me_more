@@ -32,14 +32,14 @@ class ApplicationController < Sinatra::Base
       login_user(auth_record.user)
     else
       # New User
-      auth_record = Authentication.create!(:provider => auth['provider'], :uid => auth['uid'])
-      
       user = User.new
-      user.authentications << auth_record
       user.handle = auth['user_info']['nickname']
       user.email = auth['user_info']['email'] if !auth['user_info']['email'].nil?
       user.image_url = auth['user_info']['image'] if !auth['user_info']['image'].nil?
       user.save
+
+      # TODO: Figure out why validation fails here :(
+      Authentication.create!(:provider => auth['provider'], :uid => auth['uid'], :user => user)
       
       login_user(user)
     end

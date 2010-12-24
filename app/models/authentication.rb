@@ -2,8 +2,8 @@ class Authentication
   include DataMapper::Resource
   
   property :id, Serial
-  property :provider, String
-  property :uid, String
+  property :provider, String, :length => 255
+  property :uid, String, :length => 255
   
   belongs_to :user
   
