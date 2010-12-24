@@ -18,3 +18,15 @@ function getLatestTweets (user) {
 		$("#results").show("slow");
 	});
 }
+
+function getStep2 () {
+	$("#step").hide("slow");
+	$("#loading").show("slow");
+
+	// Load Step 2
+	$.get('/tweets/step2', function(data) {
+		$('#step').html(data);
+		$("#loading").hide("slow");
+		$("#step").show("slow");
+	});
+}

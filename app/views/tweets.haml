@@ -1,5 +1,10 @@
-%h1= "Retrieved #{@tweets.count} tweets"
 #summary= "You have #{@tweet_count} tweets indexed"
+#next_step
+- if @tweet_count > 0
+	%a{:href => "#", :onClick => "getStep2();"} Calculate Interestingness >>>
+- else
+	You need to have some tweets indexed to proceed further
+	
 - @tweets.each_with_index do |tweet, index|
 	%div{:id => "tweet_#{tweet.id}", :class => "tweet profile #{(index%2 == 1) ? 'left' : 'right'}"}
 		.author

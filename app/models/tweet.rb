@@ -17,7 +17,7 @@ class Tweet
   
   indexes :id, :tweet_id, :text, :lat, :lon
   
-  after :save do
+  after :create do
     add_to_index
   end
 end
