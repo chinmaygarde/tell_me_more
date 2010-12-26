@@ -1,4 +1,3 @@
-// TODO: Add Failure Handlers
 $(document).ready(function() {
 	
 	// Load Step 1

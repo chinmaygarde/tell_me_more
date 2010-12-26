@@ -13,6 +13,7 @@ class TweetProcessor
       result.urls << match
       " "
     end
+    result.urls.uniq!
     result
   end
   
@@ -23,6 +24,7 @@ class TweetProcessor
       result.tweeple << match
       " "
     end
+    result.tweeple.uniq!
     result
   end
   
@@ -33,6 +35,7 @@ class TweetProcessor
       result.hashtags << match
       " "
     end
+    result.hashtags.uniq!
     result
   end
   

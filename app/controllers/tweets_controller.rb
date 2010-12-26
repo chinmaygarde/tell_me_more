@@ -21,6 +21,7 @@ class TweetsController < ApplicationController
     haml :step3, :layout => false
   end
   
+  # Called by step 1
   get '/latest/:user' do |user|
     raw_tweets = Twitter.user_timeline(user, :count => 200)
     @tweets = []
@@ -34,5 +35,16 @@ class TweetsController < ApplicationController
     end
     @tweet_count = current_user.tweets.count
     haml :tweets, :layout => false
+  end
+  
+  # Called by step 2
+  get '/process/:user_id' do |user_id|
+    processor = TweetProcessor.new
+    processor.raw_text = ""
+    User.get(user_id).tweets.each do |tweet|
+      processor.raw_text = processor.raw_text + " " + tweet.text
+    end
+    @result = processor.gather_result
+    haml :processed, :layout => false
   end
 end

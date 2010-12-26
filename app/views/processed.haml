@@ -1,0 +1,12 @@
+.words
+	- @result.words.each_pair do |key, value|
+		%div{:class => "profile"}= "#{key} occurs #{value} times"
+.hashtags
+	- @result.hashtags.each_with_index do |hash, index|
+		%div{:id => "hash_#{index + 1}", :class => "profile"}= hash
+.tweeple
+	- @result.tweeple.each_with_index do |person, index|
+		%div{:id => "person_#{index + 1}", :class => "profile"}= person
+.urls
+	- @result.urls.each_with_index do |url, index|
+		%div{:id => "url_#{index + 1}", :class => "profile"}= url
