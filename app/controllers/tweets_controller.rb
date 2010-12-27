@@ -5,8 +5,8 @@ class TweetsController < ApplicationController
     end
   end
   
-  get '/gather' do
-    haml :gather
+  get '/wizard' do
+    haml :wizard
   end
   
   get '/step1' do
