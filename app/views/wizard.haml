@@ -1,0 +1,11 @@
+#step
+	%h1 Wizard
+	%ul
+		%li
+			%a{:href => "#", :onClick => "getStep1();"} Fetch Latest Tweets
+		%li
+			%a{:href => "#", :onClick => "getStep2();"} Calculate Interestingness on already fetched tweets
+#loading{:style => "display:none;"}
+	%div
+		%span Loading...
+		%img{:src => "images/loading.gif"}
