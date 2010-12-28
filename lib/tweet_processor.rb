@@ -21,7 +21,7 @@ class TweetProcessor
   def gather_tweeple    
     result.tweeple ||= []
     raw_text.gsub!(/@[a-zA-Z~_\-]+/) do |match|
-      result.tweeple << match
+      result.tweeple << match.gsub("@", "")
       " "
     end
     result.tweeple.uniq!
