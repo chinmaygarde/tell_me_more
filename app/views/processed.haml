@@ -1,22 +1,54 @@
 :javascript
 	$(document).ready(function(){
 		$( "#tabs" ).tabs();
+		$("#instapaper_dialog").dialog({height: 360, autoOpen:false});
 	});
+#instapaper_dialog{:title => "Add to Instapaper"}
+	%label Instapaper Email
+	%br
+	%input{:id => "instapaper_username", :type => "text", :placeholder => "Instapaper Email"}
+	%hr
+	%label Instapaper Password (if you have one)
+	%br
+	%input{:id => "instapaper_password", :type => "password", :placeholder => "Instapaper Password"}
+	%hr
+	%label Page Title (Optional)
+	%br
+	%input{:id => "instapaper_title", :type => "text", :placeholder => "Page Title (Optional)"}
+	%hr
+	%label URL
+	%br
+	%input{:id => "instapaper_url", :type => "text", :placeholder => "Page URL"}
+	%hr
+	%input{:type => "submit", :value => "Add to Instapaper", :onClick=>"submitFormToInstapaper();"}
+	%br
+	%p{:id => "instapaper_error", :style => "color:#f00"}
 #tabs
 	%ul
+		%li
+			%a{:href => "#urls"} Links
 		%li
 			%a{:href => "#tweeple"} People
 		%li
 			%a{:href => "#hashtags"} Hashtags
 		%li
 			%a{:href => "#words"} Interesting Words
-		%li
-			%a{:href => "#urls"} Read Urls
-	#tweeple= @result.tweeple.join(", ")
-	#hashtags= @result.hashtags.join(", ")
+	#tweeple
+		- @result.tweeple.each_with_index do |person, index|
+			%div{:class => "profile"}
+				%a{:href => "http://www.twitter.com/#{person}", :target => "_blank"}= "#{person}"
+	#hashtags
+		- @result.hashtags.each_with_index do |tag, index|
+			%div{:class => "profile"}
+				%a{:href => "http://search.twitter.com/search?q=#{tag.gsub('#', '')}", :target => "_blank"}= "Search #{tag}"
 	#words
 		- @result.words.each_pair do |key, value|
 			%div{:class => "profile"}= "#{key} occurs #{value} times"
 	#urls
 		- @result.urls.each_with_index do |url, index|
-			%div{:id => "url_#{index + 1}", :class => "profile"}= url
+			%div{:id => "url_#{index + 1}", :class => "profile"}
+				%a{:id => "short_url_#{index + 1}", :href => url, :target => "_blank"}= "#{index + 1}.  #{url}"
+				%br
+				%br
+				%a{:href => "#", :onClick => "showInstapaperForm('#{url}')"} Add to Instapaper | 
+				%a{:id => "long_url_link_#{index + 1}", :href => "#", :onClick => "getLongUrl('#{CGI::escape(url)}', #{index + 1})"} | Get Long URL
