@@ -13,4 +13,8 @@ map "/tweets" do
   run TweetsController.new
 end
 
+map "/search" do
+  run SearchController.new
+end
+
 puts "Server Started in #{Application::ENVIRONMENT}..."

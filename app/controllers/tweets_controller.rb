@@ -30,6 +30,7 @@ class TweetsController < ApplicationController
       tweet.text = raw_tweet.text
       tweet.user = current_user
       tweet.created_at = Time.now
+      tweet.author = current_user.handle
       tweet.save
       @tweets << tweet
     end

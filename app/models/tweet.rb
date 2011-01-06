@@ -8,6 +8,7 @@ class Tweet
   property :lat, String
   property :lon, String
   property :created_at, DateTime
+  property :author, String
   
   belongs_to :user
   
@@ -15,7 +16,7 @@ class Tweet
   validates_presence_of :text
   validates_presence_of :created_at
   
-  indexes :id, :tweet_id, :text, :lat, :lon
+  indexes :id, :tweet_id, :text, :lat, :lon, :author
   
   after :create do
     add_to_index

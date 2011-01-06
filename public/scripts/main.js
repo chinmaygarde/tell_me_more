@@ -30,6 +30,18 @@ function getStep2 () {
 	});
 }
 
+function getSearch() {
+	$("#step").hide("slow");
+	$("#loading").show("slow");
+
+	// Load Step 2
+	$.get('/search', function(data) {
+		$('#step').html(data);
+		$("#loading").hide("slow");
+		$("#step").show("slow");
+	});
+}
+
 function getInterestingness(user_id) {
 	$.get("/tweets/process/" + user_id, function(data) {
 		$('#results').html(data);
@@ -63,11 +75,20 @@ function submitFormToInstapaper() {
 			$("#instapaper_error").html("Failed with response " + data.status);
 		};
 	});
-	
-	
 }
 
 function showInstapaperForm(url) {
 	$("#instapaper_url").val(url);
 	$("#instapaper_dialog").dialog('open');
+}
+
+function searchTerm() {
+	var val = $("#searchInput").val();
+	if (val.length > 2) {
+		$("#search_results").html("");
+
+		$.get('/search/' + val, function(data) {
+			$('#search_results').html(data);
+		});
+	};
 }

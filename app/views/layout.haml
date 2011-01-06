@@ -13,7 +13,7 @@
 			#top_bar_contents
 				#logo
 				#search_bar
-					%input{:type=>"text", :placeholder => "Search"}
+
 				#link_bar
 					%ul
 						%li
@@ -33,4 +33,11 @@
 			#main_pane.pane
 				= yield
 			#nav_pane.pane
-				= yield_content :nav_pane
+				- if signed_in?
+					%h1 Steps
+					#step1_link.profile
+						%a{:href => "#", :onClick => "getStep1();"} Fetch Tweets
+					#step2_link.profile
+						%a{:href => "#", :onClick => "getStep2();"} Get Info
+					#search_link.profile
+						%a{:href => "#", :onClick => "getSearch()"} Search

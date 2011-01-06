@@ -1,0 +1,9 @@
+- if @results.size > 0
+	- @results.each_with_index do |result, index|
+		%div{:id => "result_#{index + 1}", :class => "tweet profile #{(index%2 == 1) ? 'left' : 'right'}"}
+			.author
+				%img{:src => current_user.image_url, :style => "width: 32px; height: 32px;" }
+				%span{:style => "font-size: 18px; font-weight: bold;"}= current_user.handle
+			.tweet_text= result["text"]
+- else
+	There were no search results
