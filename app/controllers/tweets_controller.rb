@@ -23,7 +23,7 @@ class TweetsController < ApplicationController
   
   # Called by step 1
   get '/latest/:user' do |user|
-    raw_tweets = Twitter.user_timeline(user, :count => 200)
+    raw_tweets = Twitter.user_timeline(user, :count => 20)
     @tweets = []
     raw_tweets.each do |raw_tweet|
       tweet = Tweet.first_or_new(:tweet_id => raw_tweet.id.to_s)
