@@ -26,7 +26,16 @@ DataMapper.setup(:default, ENV['DATABASE_URL'] || "sqlite3://#{File.expand_path(
 DataMapper::Model.raise_on_save_failure = true
 
 # Load Paths under app directory
-%w[helpers controllers jobs models].each do |dir|
+%w[helpers jobs models].each do |dir|
+  Dir[File.join(File.dirname(__FILE__), "app", dir, "**/*.rb")].each do |file|
+    require File.expand_path(file)
+  end
+end
+
+require "application_controller"
+
+# Load Paths under app directory
+%w[controllers].each do |dir|
   Dir[File.join(File.dirname(__FILE__), "app", dir, "**/*.rb")].each do |file|
     require File.expand_path(file)
   end
